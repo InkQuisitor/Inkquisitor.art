@@ -1,0 +1,47 @@
+/* 
+  Custom styles that are better handled outside of Tailwind utility classes.
+  Most styling is handled by Tailwind v4 in index.html!
+*/
+
+/* Custom underline effect for navigation links using pale yellow */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px; /* thick sketchy underline */
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-pale-yellow);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    border-radius: 2px;
+    z-index: -1; /* place behind text if it overlaps */
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Base custom animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Smoother scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Offset for fixed headers if added later */
+}
