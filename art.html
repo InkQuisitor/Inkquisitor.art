@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkQuisitor | Art</title>
+
+    <!-- Google Fonts: Inter (Body) and Caveat (Links/Accents) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS v4 Browser Script for No-Build Setup -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- Tailwind Configuration (Theme) -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-pale-yellow: #fef08a; /* Tailwind yellow-200 */
+            --font-display: "Caveat", cursive;
+            --font-body: "Inter", sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-white text-zinc-900 font-body antialiased flex flex-col min-h-screen selection:bg-pale-yellow selection:text-black">
+
+    <!-- Header / Navigation -->
+    <header
+        class="py-8 px-6 md:px-12 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center border-b-2 border-zinc-100">
+        <a href="index.html" class="text-3xl font-bold tracking-tight mb-4 md:mb-0 hover:text-zinc-600 transition-colors">
+            InkQuisitor.art
+        </a>
+        <nav>
+            <ul class="flex space-x-8 text-xl font-display">
+                <li><a href="art.html" class="nav-link relative hover:text-zinc-600 transition-colors">Art</a></li>
+                <li><a href="animations.html" class="nav-link relative hover:text-zinc-600 transition-colors">Animations</a>
+                </li>
+                <li><a href="contact.html" class="nav-link relative hover:text-zinc-600 transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-6 md:px-12 py-12">
+        <!-- Art Section -->
+        <section id="art" class="mb-24 animate-fade-in-up">
+            <h2 class="text-3xl font-display mb-8 pb-2 border-b border-zinc-100 inline-block pr-8">General Art
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 pb-12">
+                <!-- Art Item 1 -->
+                <article class="flex flex-col gap-3 group cursor-zoom-in hover:scale-[1.03] transition-all duration-500 z-10 hover:z-20">
+                    <div class="flex flex-row justify-between items-baseline px-1">
+                        <h3 class="font-medium text-black text-xl">A Sunny Day</h3>
+                        <p class="text-sm text-zinc-500 font-light">Digital Drawing</p>
+                    </div>
+                    <img src="Portfolio/A_Warm_Summer_Day.jpg" alt="Sunny Dragon" class="w-full aspect-[11/8] object-cover shadow group-hover:shadow-xl transition-shadow duration-500 rounded-sm">
+                </article>
+                <!-- Art Item 2 -->
+                <article class="flex flex-col gap-3 group cursor-zoom-in hover:scale-[1.03] transition-all duration-500 z-10 hover:z-20">
+                    <div class="flex flex-row justify-between items-baseline px-1">
+                        <h3 class="font-medium text-black text-xl">Angels</h3>
+                        <p class="text-sm text-zinc-500 font-light">Digital Drawing</p>
+                    </div>
+                    <img src="Portfolio/Angels.jpg" alt="Angels" class="w-full aspect-[8/8] object-cover shadow group-hover:shadow-xl transition-shadow duration-500 rounded-sm">
+                </article>
+                <!-- Art Item 3 -->
+                <article class="flex flex-col gap-3 group cursor-zoom-in hover:scale-[1.03] transition-all duration-500 z-10 hover:z-20">
+                    <div class="flex flex-row justify-between items-baseline px-1">
+                        <h3 class="font-medium text-black text-xl">Character Profile</h3>
+                        <p class="text-sm text-zinc-500 font-light">Digital Drawing</p>
+                    </div>
+                    <img src="Portfolio/Wisteria.jpg" alt="Wisteria" class="w-full aspect-[7/8] object-cover shadow group-hover:shadow-xl transition-shadow duration-500 rounded-sm">
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-zinc-50 border-t border-zinc-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center">
+            <p class="text-sm text-zinc-400">
+                &copy; <span id="year"></span> InkQuisitor. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Custom Logic -->
+    <script src="main.js"></script>
+</body>
+
+</html>

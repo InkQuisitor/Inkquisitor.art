@@ -55,5 +55,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 4. Image Lightbox for Art Section
+    const artArticles = document.querySelectorAll('section#art article');
+    if (artArticles.length > 0) {
+        // Create full-screen overlay elements
+        const lightbox = document.createElement('div');
+        lightbox.className = 'fixed inset-0 bg-black/95 z-50 hidden flex-col items-center justify-center backdrop-blur-md opacity-0 transition-opacity duration-300 cursor-zoom-out';
+        
+        const lightboxImg = document.createElement('img');
+        lightboxImg.className = 'max-w-[90vw] max-h-[90vh] object-contain shadow-2xl rounded border border-zinc-800 scale-95 transition-transform duration-300';
+        
+        const closeText = document.createElement('p');
+        closeText.className = 'text-zinc-500 mt-6 font-light text-xs tracking-widest uppercase';
+        closeText.textContent = 'Click anywhere or press Esc to close';
+        
+        lightbox.appendChild(lightboxImg);
+        lightbox.appendChild(closeText);
+        document.body.appendChild(lightbox);
+        
+        // Functions to open and close the lightbox smoothly
+        const closeLightbox = () => {
+            lightbox.classList.remove('opacity-100');
+            lightboxImg.classList.remove('scale-100');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }, 300);
+        };
+
+        const openLightbox = (src, alt) => {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            
+            // Trigger reflow to ensure the transition animations play
+            void lightbox.offsetWidth;
+            
+            lightbox.classList.add('opacity-100');
+            lightboxImg.classList.add('scale-100');
+        };
+
+        // Attach click listeners to all artworks
+        artArticles.forEach(article => {
+            const img = article.querySelector('img');
+            if (img) {
+                article.classList.add('cursor-zoom-in');
+                article.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openLightbox(img.src, img.alt);
+                });
+            }
+        });
+
+        // Event listeners for closing
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // 5. Click-to-play for Animations
+    const animArticles = document.querySelectorAll('.animation-card');
+    animArticles.forEach(article => {
+        const video = article.querySelector('video');
+        const overlay = article.querySelector('.play-overlay');
+        
+        if (video && overlay) {
+            article.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    overlay.style.opacity = '0'; // Hide the play button
+                } else {
+                    video.pause();
+                    overlay.style.opacity = '1'; // Show the play button
+                }
+            });
+        }
+    });
+
     console.log("InkQuisitor.art loaded successfully!");
 });
