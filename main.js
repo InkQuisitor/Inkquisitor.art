@@ -124,13 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const overlay = article.querySelector('.play-overlay');
         
         if (video && overlay) {
+            // Update overlay based on video state events
+            video.addEventListener('play', () => {
+                overlay.style.opacity = '0';
+            });
+            video.addEventListener('pause', () => {
+                overlay.style.opacity = '1';
+            });
+
+            // Initial check for autoplay or pre-playing videos
+            if (!video.paused) {
+                overlay.style.opacity = '0';
+            }
+
             article.addEventListener('click', () => {
                 if (video.paused) {
                     video.play();
-                    overlay.style.opacity = '0'; // Hide the play button
                 } else {
                     video.pause();
-                    overlay.style.opacity = '1'; // Show the play button
                 }
             });
         }
